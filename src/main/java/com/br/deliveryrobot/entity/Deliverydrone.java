@@ -7,18 +7,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity
 @Table(name = "t_deliverydrone")
-public class Deliverydrone {
+public @Data class Deliverydrone {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,18 +10,17 @@ import javax.persistence.Table;
 import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity
 @Table(name = "t_order")
-public class Order {
+public @Data class Order {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
