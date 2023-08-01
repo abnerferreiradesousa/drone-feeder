@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,5 +30,8 @@ public class Video {
     this.name = name;
     this.data = data;
   }
+
+  @OneToOne(mappedBy = "video")
+  private Order order;
 
 }

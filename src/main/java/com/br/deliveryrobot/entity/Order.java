@@ -1,6 +1,7 @@
 package com.br.deliveryrobot.entity;
 
 import java.time.LocalDateTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
@@ -50,5 +52,9 @@ public @Data class Order {
   @ManyToOne
   @JoinColumn(name = "deliverydrone_id")
   private Deliverydrone deliverydrone;
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "video_id", referencedColumnName = "id")
+  private Video video;
 
 }
