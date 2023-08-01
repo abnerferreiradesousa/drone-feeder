@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
@@ -34,8 +36,6 @@ public @Data class Order {
   @Column(name = "items_quantity")
   private int itemsQuantity;
 
-  private byte[] video;
-
   @Column(name = "bought_at")
   private LocalDateTime boughtAt;
 
@@ -44,5 +44,9 @@ public @Data class Order {
 
   @Column(name = "out_for_delivey_at")
   private LocalDateTime outForDeliveryAt;
+
+  @ManyToOne
+  @JoinColumn(name = "customer_id", nullable = false)
+  private Customer customer;
 
 }
