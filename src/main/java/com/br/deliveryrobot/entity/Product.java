@@ -1,16 +1,16 @@
 package com.br.deliveryrobot.entity;
 
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Builder
@@ -26,5 +26,8 @@ public @Data class Product {
   private String name;
   private String description;
   private double price;
+
+  @ManyToMany(mappedBy = "products")
+  private Set<Order> orders;
 
 }

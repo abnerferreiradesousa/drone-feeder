@@ -1,6 +1,7 @@
 package com.br.deliveryrobot.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -45,6 +48,10 @@ public @Data class Order {
   @Column(name = "out_for_delivey_at")
   private LocalDateTime outForDeliveryAt;
 
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "video_id", referencedColumnName = "id")
+  private Video video;
+
   @ManyToOne
   @JoinColumn(name = "customer_id", nullable = false)
   private Customer customer;
@@ -53,8 +60,9 @@ public @Data class Order {
   @JoinColumn(name = "deliverydrone_id")
   private Deliverydrone deliverydrone;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "video_id", referencedColumnName = "id")
-  private Video video;
+  @ManyToMany
+  @JoinTable(name = "t_order_product", joinColumns = @JoinColumn(name = "order_id"),
+      inverseJoinColumns = @JoinColumn(name = "product_id"))
+  private Set<Product> products;
 
 }
