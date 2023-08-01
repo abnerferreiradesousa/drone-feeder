@@ -13,9 +13,7 @@ import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Builder
@@ -48,5 +46,9 @@ public @Data class Order {
   @ManyToOne
   @JoinColumn(name = "customer_id", nullable = false)
   private Customer customer;
+
+  @ManyToOne
+  @JoinColumn(name = "deliverydrone_id")
+  private Deliverydrone deliverydrone;
 
 }

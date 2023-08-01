@@ -1,23 +1,24 @@
 package com.br.deliveryrobot.entity;
 
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "t_deliverydrone")
-public @Data class Deliverydrone {
+public class Deliverydrone {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +27,8 @@ public @Data class Deliverydrone {
   private String nickname;
   private double latitude;
   private double longitude;
+
+  @OneToMany(mappedBy = "deliverydrone")
+  private Set<Order> orders;
 
 }
