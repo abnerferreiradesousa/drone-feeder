@@ -20,12 +20,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "t_order")
-public @Data class Order {
+public class Order {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

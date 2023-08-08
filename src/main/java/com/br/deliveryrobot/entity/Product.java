@@ -12,12 +12,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "t_product")
-public @Data class Product {
+public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
