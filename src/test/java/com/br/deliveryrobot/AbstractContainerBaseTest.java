@@ -10,7 +10,6 @@ public class AbstractContainerBaseTest {
 
   public static MySQLContainer container = new MySQLContainer<>("mysql:5.7");
 
-
   @DynamicPropertySource
   public static void overrideProps(DynamicPropertyRegistry registry) {
     registry.add("spring.datasource.url", container::getJdbcUrl);

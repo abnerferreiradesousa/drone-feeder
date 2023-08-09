@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.service.OrderService;
 
+// @RestController
+// @RequestMapping("/api/orders")
 public class OrderController {
 
   @Autowired
