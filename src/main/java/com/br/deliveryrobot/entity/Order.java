@@ -1,6 +1,6 @@
 package com.br.deliveryrobot.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import com.br.deliveryrobot.enums.DeliveryStatus;
+import org.hibernate.annotations.CreationTimestamp;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,29 +32,28 @@ public class Order {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private DeliveryStatus status;
-
   @Column(name = "total_price")
   private double totalPrice;
 
   @Column(name = "items_quantity")
   private int itemsQuantity;
 
-  @Column(name = "bought_at")
-  private LocalDateTime boughtAt;
+  @Column(name = "bought_at", updatable = false)
+  @CreationTimestamp
+  private Date boughtAt;
 
   @Column(name = "delivered_at")
-  private LocalDateTime deliveredAt;
+  private Date deliveredAt;
 
   @Column(name = "out_for_delivey_at")
-  private LocalDateTime outForDeliveryAt;
+  private Date outForDeliveryAt;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "video_id", referencedColumnName = "id")
   private Video video;
 
   @ManyToOne
-  @JoinColumn(name = "customer_id", nullable = false)
+  @JoinColumn(name = "customer_id")
   private Customer customer;
 
   @ManyToOne
