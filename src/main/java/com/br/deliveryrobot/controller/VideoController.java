@@ -33,12 +33,9 @@ public class VideoController {
   }
 
   @GetMapping("{videoId}")
-  public ResponseEntity<Resource> getVideoByName(@PathVariable("videoId") long videoId) {
-
-    Video video = this.videoService.getVideoById(videoId);
-
+  public ResponseEntity<Resource> downloadVideoById(@PathVariable("videoId") long videoId) {
+    Video video = this.videoService.downloadVideoById(videoId);
     Resource videoResource = new ByteArrayResource(video.getData());
-
     String headerValue = "attachment; filename=\"" + video.getName() + "\"";
 
     return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)

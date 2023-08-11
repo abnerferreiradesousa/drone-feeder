@@ -19,7 +19,7 @@ public class VideoService {
     videoRepository.save(video);
   }
 
-  public Video getVideoById(long videoId) {
+  public Video downloadVideoById(long videoId) {
     return videoRepository.findById(videoId).orElse(null);
   }
 
