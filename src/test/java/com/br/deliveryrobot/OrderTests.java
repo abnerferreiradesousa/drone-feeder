@@ -27,7 +27,7 @@ class OrderTests extends AbstractContainerBaseTest {
   private MockMvc mockMvc;
 
   @Test
-  @org.springframework.core.annotation.Order(1)
+  @org.junit.jupiter.api.Order(1)
   void givenOrder_whenInsertOrder_thenReturnOrder() throws Exception {
     Order order = Order.builder().totalPrice(12.00).itemsQuantity(4).build();
 
@@ -43,7 +43,7 @@ class OrderTests extends AbstractContainerBaseTest {
   }
 
   @Test
-  @org.springframework.core.annotation.Order(2)
+  @org.junit.jupiter.api.Order(2)
   void givenOrder_whenGetOrderById_thenReturnOrder() throws Exception {
     ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/orders/1"));
 
@@ -55,7 +55,7 @@ class OrderTests extends AbstractContainerBaseTest {
   }
 
   @Test
-  @org.springframework.core.annotation.Order(3)
+  @org.junit.jupiter.api.Order(3)
   void givenOrder_whenUpdateToReadyForDelivery_thenReturnOrderUpdated() throws Exception {
     ResultActions response =
         mockMvc.perform(MockMvcRequestBuilders.put("/api/orders/1/readyfordelivery"));
@@ -67,7 +67,7 @@ class OrderTests extends AbstractContainerBaseTest {
   }
 
   @Test
-  @org.springframework.core.annotation.Order(4)
+  @org.junit.jupiter.api.Order(4)
   void givenOrder_whenUpdateToOutForDelivery_thenReturnOrderUpdated() throws Exception {
     ResultActions response =
         mockMvc.perform(MockMvcRequestBuilders.put("/api/orders/1/outfordelivery"));
@@ -79,7 +79,7 @@ class OrderTests extends AbstractContainerBaseTest {
   }
 
   @Test
-  @org.springframework.core.annotation.Order(5)
+  @org.junit.jupiter.api.Order(5)
   void givenOrder_whenDeleteOrder_thenReturnNoContent() throws Exception {
     ResultActions response = mockMvc.perform(MockMvcRequestBuilders.delete("/api/orders/1"));
 
