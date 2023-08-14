@@ -26,9 +26,6 @@ class DroneFeederApplicationTests extends AbstractContainerBaseTest {
   @Autowired
   private MockMvc mockMvc;
 
-  // @Autowired
-  // private DeliverydroneRepository deliverydroneRepository;
-
   // given/when/then format - BDD style
 
   @Test

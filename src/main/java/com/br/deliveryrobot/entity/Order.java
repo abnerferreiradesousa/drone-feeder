@@ -5,6 +5,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
+import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,15 +41,21 @@ public class Order {
   @Column(name = "items_quantity")
   private int itemsQuantity;
 
+  @Enumerated(EnumType.STRING)
+  private DeliveryStatus status = DeliveryStatus.EM_PREPARACAO;
+
   @Column(name = "bought_at", updatable = false)
   @CreationTimestamp
   private Date boughtAt;
 
-  @Column(name = "delivered_at")
-  private Date deliveredAt;
+  @Column(name = "ready_for_delivey_at")
+  private Date readyForDeliveryAt;
 
   @Column(name = "out_for_delivey_at")
   private Date outForDeliveryAt;
+
+  @Column(name = "delivered_at")
+  private Date deliveredAt;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "video_id", referencedColumnName = "id")

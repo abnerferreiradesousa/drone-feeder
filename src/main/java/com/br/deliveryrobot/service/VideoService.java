@@ -20,7 +20,12 @@ public class VideoService {
   }
 
   public Video downloadVideoById(long videoId) {
-    return videoRepository.findById(videoId).orElse(null);
+    return this.getById(videoId);
+  }
+
+  public Video getById(long videoId) {
+    return videoRepository.findById(videoId)
+        .orElseThrow(() -> new RuntimeException("Vídeo não encontrado!"));
   }
 
   public List<Video> getAllVideos() {

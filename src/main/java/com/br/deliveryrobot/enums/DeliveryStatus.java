@@ -1,5 +1,5 @@
 package com.br.deliveryrobot.enums;
 
 public enum DeliveryStatus {
-  EM_TRANSITO, EM_PREPARACAO, ENTREGUE, PRONTO_PARA_ENTREGA;
+  EM_PREPARACAO, PRONTO_PARA_ENTREGA, EM_TRANSITO, ENTREGUE;
 }

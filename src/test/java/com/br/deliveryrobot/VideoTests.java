@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.multipart.MultipartFile;
-import com.br.deliveryrobot.repository.VideoRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -27,9 +26,6 @@ class VideoTests extends AbstractContainerBaseTest {
 
   @Autowired
   private MockMvc mockMvc;
-
-  @Autowired
-  private VideoRepository videoRepository;
 
   @Order(1)
   @Test
@@ -54,10 +50,19 @@ class VideoTests extends AbstractContainerBaseTest {
   @Order(3)
   @Test
   void givenVideo_whenGetVideo_thenDownloadIt() throws Exception {
-    ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/videos/1"));
+    ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/videos/download/1"));
     response.andExpect(status().isOk());
     response.andReturn();
     response.andExpect(content().contentType(MediaType.APPLICATION_OCTET_STREAM));
+  }
+
+  @Order(4)
+  @Test
+  void givenVideo_whenGetVideo_thenReturnVideo() throws Exception {
+    ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get("/api/videos/1"));
+    response.andExpect(status().isOk());
+    response.andReturn();
+    response.andExpect(jsonPath("$.name", is("meuVideo")));
   }
 
 }

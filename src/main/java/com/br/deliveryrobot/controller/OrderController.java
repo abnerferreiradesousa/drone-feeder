@@ -27,19 +27,38 @@ public class OrderController {
     return this.orderService.registerOrder(order);
   }
 
-  @GetMapping("/{orderId}")
+  @GetMapping("{orderId}")
   @ResponseStatus(HttpStatus.OK)
   public Order getOrderById(@PathVariable(required = true) long orderId) {
     return this.orderService.getOrderById(orderId);
   }
 
-  @PutMapping("/{orderId}")
+  // nao testei
+  @PutMapping("{orderId}/{droneId}")
   @ResponseStatus(HttpStatus.OK)
-  public Order updateOrder(@PathVariable(required = true) long orderId, @RequestBody Order order) {
-    return this.orderService.updateOrder(orderId, order);
+  public Order updateOrder(@PathVariable(required = true) long orderId, @PathVariable long droneId,
+      @RequestBody Order order) {
+    return this.orderService.updateOrder(orderId, droneId, order);
   }
 
-  @DeleteMapping("/{orderId}")
+  @PutMapping("{orderId}/readyfordelivery")
+  public Order updateToReadyForDelivery(@PathVariable(required = true) long orderId) {
+    return this.orderService.updateToReadyForDelivery(orderId);
+  }
+
+  @PutMapping("{orderId}/outfordelivery")
+  public Order updateToOutforDelivery(@PathVariable(required = true) long orderId) {
+    return this.orderService.updateToOutforDelivery(orderId);
+  }
+
+  // nao testei
+  @PutMapping("{orderId}/{videoId}/delivered")
+  public Order updateToDelivered(@PathVariable(required = true) long orderId,
+      @PathVariable(required = true) long videoId) {
+    return this.orderService.updateToDelivered(orderId, videoId);
+  }
+
+  @DeleteMapping("{orderId}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void removeOrder(@PathVariable(required = true) long orderId) {
     this.orderService.deleteOrder(orderId);

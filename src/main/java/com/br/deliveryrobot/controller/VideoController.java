@@ -32,7 +32,7 @@ public class VideoController {
     return ResponseEntity.ok("Vídeo salvo com sucesso!");
   }
 
-  @GetMapping("{videoId}")
+  @GetMapping("/download/{videoId}")
   public ResponseEntity<Resource> downloadVideoById(@PathVariable("videoId") long videoId) {
     Video video = this.videoService.downloadVideoById(videoId);
     Resource videoResource = new ByteArrayResource(video.getData());
@@ -40,6 +40,11 @@ public class VideoController {
 
     return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
         .header(HttpHeaders.CONTENT_DISPOSITION, headerValue).body(videoResource);
+  }
+
+  @GetMapping("{videoId}")
+  public Video getById(@PathVariable(required = true) long videoId) {
+    return this.videoService.getById(videoId);
   }
 
   @GetMapping
