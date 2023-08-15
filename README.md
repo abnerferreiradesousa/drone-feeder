@@ -4,43 +4,34 @@
 
 <h2>🥱 Introdução...</h2>
 
-<p>Este repositório contém uma Application Programming Interface(API) de Blogs e seus testes, desenvolvidos usando a plataforma .NET e C#.</p>
+<p>O Drone Feeder é uma aplicação que gerencia um sistema de pedidos em que as entregas são feitas por drones.</p>
 
 ---
 
 <h2>🛠️ Tecnologias utilizadas 🧰</h2>
 
-* <p>👉 C#</p>
+<ul>
+  <li>👉 Java</li>
+  <li>👉 Spring Boot</li>
+  <li>👉 Banco de Dados MySQL</li>
+  <li>👉 Docker</li>
+  <li>👉 Lombok</li>
+  <li>👉 JUnit</li>
+  <li>👉 TestContainers</li>
+</ul>
 
-* <p>👉 .NET</p>
-
-* <p>👉 ASP.NET</p>
-
-* <p>👉 JsonWebToken</p>
-
-* <p>👉 MySQL</p>
-
-* <p>👉 Entitiy Framework</p>
-
-* <p>👉 Swagger</p>
-
-* <p>👉 xUnit</p>
-
-* <p>👉 FlueAssertions</p>
-
-* <p>👉 Docker</p>
 ---
 
-<h2>👨‍💻 Rodando o projeto e usar os recuros da API na sua máquina 👨‍💻</h2>
+<h2>👨‍💻 Rodando o projeto e usar os recursos da API na sua máquina 👨‍💻</h2>
 
 <details>
   
 <summary><strong>Como rodar?</strong></summary>
   
 1. Clone o repositório com o comando:
-  - `git clone git@github.com:caioBatistaDosSantos/Project-Tryitter.git`;
+  - `git clone git@github.com:abnerferreiradesousa/drone-feeder.git`;
     - Entre na pasta do repositório:
-      - `cd Project-Tryitter`
+      - `cd drone-feeder`
 2. Inicie a aplicação com o comando:
  - `docker-compose up -d --build`
    - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e populá-lo, e outro para subir a API e disponilizar uma URL para acesso da aplicação.*
@@ -55,12 +46,12 @@
       
 </details>
 
-<h2><i>Projeto em desenvolvimento...</i></h2>
+<h2><i>Desenvolvimento...</i></h2>
 
 - [Trello](https://trello.com/c/9tutsbgi/11-link-do-escalidraw-https-excalidrawcom-json6iooox5zdvz4of7xxzyny7vcx0bqpjbjhsoorrjftta)
 - [Escalidraw](https://excalidraw.com/#json=6IooOx5zDVZ4OF7XXzyny,7vCx0bQpJBJHSoOrRJfTtA)
 
-<h2>💥 Defafios que enfrentamos... 🗡️</h2> 
+<h2>💥 Defafios que enfrentei 🗡️</h2> 
 
 * 🛡️ Conflitos de código.
 * 🥊 Configuração de algumas ferramentas como JWT e os Testes.
