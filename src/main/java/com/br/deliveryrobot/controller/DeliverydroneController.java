@@ -27,6 +27,7 @@ public class DeliverydroneController {
     return this.deliverydroneService.registerDrone(drone);
   }
 
+  // testar caso de exceção
   @GetMapping("/{droneId}")
   @ResponseStatus(HttpStatus.OK)
   public Deliverydrone getDroneById(@PathVariable(required = true) long droneId) {

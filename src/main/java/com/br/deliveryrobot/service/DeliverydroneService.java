@@ -3,6 +3,7 @@ package com.br.deliveryrobot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.br.deliveryrobot.entity.Deliverydrone;
+import com.br.deliveryrobot.exceptions.NotFoundException;
 import com.br.deliveryrobot.repository.DeliverydroneRepository;
 
 @Service
@@ -17,7 +18,7 @@ public class DeliverydroneService {
 
   public Deliverydrone getDroneById(long droneId) {
     Deliverydrone droneSearched = this.deliverydroneRepository.findById(droneId)
-        .orElseThrow(() -> new RuntimeException("Não encontrado!"));
+        .orElseThrow(() -> new NotFoundException("Não encontrado!"));
 
     return droneSearched;
   }

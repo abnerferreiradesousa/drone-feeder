@@ -1,4 +1,4 @@
-package com.br.deliveryrobot.handler.exceptions;
+package com.br.deliveryrobot.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

@@ -27,13 +27,13 @@ public class OrderController {
     return this.orderService.registerOrder(order);
   }
 
+  // testar caso de exceção
   @GetMapping("{orderId}")
   @ResponseStatus(HttpStatus.OK)
   public Order getOrderById(@PathVariable(required = true) long orderId) {
     return this.orderService.getOrderById(orderId);
   }
 
-  // nao testei
   @PutMapping("{orderId}/{droneId}")
   @ResponseStatus(HttpStatus.OK)
   public Order updateOrder(@PathVariable(required = true) long orderId, @PathVariable long droneId,
@@ -51,7 +51,6 @@ public class OrderController {
     return this.orderService.updateToOutforDelivery(orderId);
   }
 
-  // nao testei
   @PutMapping("{orderId}/{videoId}/delivered")
   public Order updateToDelivered(@PathVariable(required = true) long orderId,
       @PathVariable(required = true) long videoId) {

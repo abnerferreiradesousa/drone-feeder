@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.br.deliveryrobot.entity.Video;
+import com.br.deliveryrobot.exceptions.NotFoundException;
 import com.br.deliveryrobot.repository.VideoRepository;
 
 @Service
@@ -14,9 +15,10 @@ public class VideoService {
   @Autowired
   private VideoRepository videoRepository;
 
-  public void saveVideo(MultipartFile file, String name) throws IOException {
-    Video video = new Video(name, file.getBytes());
-    videoRepository.save(video);
+  public void saveVideo(MultipartFile file) throws IOException {
+    System.out.println("saveVideoService" + file.getOriginalFilename());
+    Video video = new Video(file.getOriginalFilename(), file.getBytes());
+    this.videoRepository.save(video);
   }
 
   public Video downloadVideoById(long videoId) {
@@ -24,8 +26,8 @@ public class VideoService {
   }
 
   public Video getById(long videoId) {
-    return videoRepository.findById(videoId)
-        .orElseThrow(() -> new RuntimeException("Vídeo não encontrado!"));
+    return this.videoRepository.findById(videoId)
+        .orElseThrow(() -> new NotFoundException("Vídeo não encontrado!"));
   }
 
   public List<Video> getAllVideos() {

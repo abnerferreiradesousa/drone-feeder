@@ -7,6 +7,7 @@ import com.br.deliveryrobot.entity.Deliverydrone;
 import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.entity.Video;
 import com.br.deliveryrobot.enums.DeliveryStatus;
+import com.br.deliveryrobot.exceptions.NotFoundException;
 import com.br.deliveryrobot.repository.OrderRepository;
 
 @Service
@@ -21,13 +22,14 @@ public class OrderService {
   @Autowired
   private DeliverydroneService deliverydroneService;
 
+  // Ajustar para passar os campos específicos, explicitamente.
   public Order registerOrder(Order order) {
     return this.orderRepository.save(order);
   }
 
   public Order getOrderById(long orderId) {
-    Order orderSearched = this.orderRepository.findById(orderId)
-        .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+    Order orderSearched =
+        this.orderRepository.findById(orderId).orElseThrow(NotFoundException::new);
     return orderSearched;
   }
 

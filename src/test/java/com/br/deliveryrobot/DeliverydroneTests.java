@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(OrderAnnotation.class)
-class DroneFeederApplicationTests extends AbstractContainerBaseTest {
+class DeliverydroneTests extends AbstractContainerBaseTest {
 
   @Autowired
   private MockMvc mockMvc;

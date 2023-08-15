@@ -26,15 +26,16 @@ public class VideoController {
   private VideoService videoService;
 
   @PostMapping
-  public ResponseEntity<String> saveVideo(@RequestParam("file") MultipartFile file,
-      @RequestParam("name") String name) throws IOException {
-    this.videoService.saveVideo(file, name);
+  public ResponseEntity<String> saveVideo(@RequestParam("file") MultipartFile file)
+      throws IOException {
+    this.videoService.saveVideo(file);
     return ResponseEntity.ok("Vídeo salvo com sucesso!");
   }
 
   @GetMapping("/download/{videoId}")
   public ResponseEntity<Resource> downloadVideoById(@PathVariable("videoId") long videoId) {
     Video video = this.videoService.downloadVideoById(videoId);
+
     Resource videoResource = new ByteArrayResource(video.getData());
     String headerValue = "attachment; filename=\"" + video.getName() + "\"";
 
@@ -42,9 +43,10 @@ public class VideoController {
         .header(HttpHeaders.CONTENT_DISPOSITION, headerValue).body(videoResource);
   }
 
+  // Testar caso de exceção.
   @GetMapping("{videoId}")
-  public Video getById(@PathVariable(required = true) long videoId) {
-    return this.videoService.getById(videoId);
+  public ResponseEntity<Video> getById(@PathVariable(required = true) long videoId) {
+    return ResponseEntity.ok(this.videoService.getById(videoId));
   }
 
   @GetMapping
