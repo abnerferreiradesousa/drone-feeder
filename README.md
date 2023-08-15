@@ -46,18 +46,17 @@
       
 </details>
 
-<h2><i>Desenvolvimento...</i></h2>
+<h2><i> ⚔️ Desenvolvimento...</i></h2>
 
 - [Trello](https://trello.com/c/9tutsbgi/11-link-do-escalidraw-https-excalidrawcom-json6iooox5zdvz4of7xxzyny7vcx0bqpjbjhsoorrjftta)
 - [Escalidraw](https://excalidraw.com/#json=6IooOx5zDVZ4OF7XXzyny,7vCx0bQpJBJHSoOrRJfTtA)
 
 <h2>💥 Defafios que enfrentei 🗡️</h2> 
 
-* 🛡️ Conflitos de código.
-* 🥊 Configuração de algumas ferramentas como JWT e os Testes.
-* ⚔️ Como popular o banco de dados.
+* 🛡️ Configurar o Lombok.
+* 🥊 Testar os endpoints relacionados aos Vídeo.
 
-<h2>Considerações finais... ✍️</h2>
+<h2>✍️ Considerações finais...</h2>
 
-<p>📚 Aprendemos a pensar/refletir mais ao nos deparar com um problema, no sentido de entender o que está causando aquela situação, ao invés de sair teclando sem um norte com o fim de achar a solução por pura tentativa, no C# isso não adianta. Isso nos ajudou a desenvolver soluções mais assertivas e até mais concisas.</p>
+<p>📚 Minha principal conquista com esse projeto Java foi poder apreciar o que estou criando, cada linha de código, a forma como estou trabalhando, se tá simples, entendível e organizado.</p>
 
