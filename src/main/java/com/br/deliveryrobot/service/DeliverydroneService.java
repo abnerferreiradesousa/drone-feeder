@@ -22,7 +22,9 @@ public class DeliverydroneService {
    * @return The drone that was persisted.
    */
   public Deliverydrone registerDrone(Deliverydrone drone) {
-    return this.deliverydroneRepository.save(drone);
+    Deliverydrone droneVo = Deliverydrone.builder().nickname(drone.getNickname())
+        .latitude(drone.getLatitude()).longitude(drone.getLongitude()).build();
+    return this.deliverydroneRepository.save(droneVo);
   }
 
   /**

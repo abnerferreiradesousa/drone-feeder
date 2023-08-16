@@ -29,8 +29,9 @@ public class OrderService {
    * @return The order that was created.
    */
   public Order registerOrder(Order order) {
-    // Save a given video on database.
-    return this.orderRepository.save(order);
+    Order orderVo = Order.builder().totalPrice(order.getTotalPrice())
+        .itemsQuantity(order.getItemsQuantity()).build();
+    return this.orderRepository.save(orderVo);
   }
 
   /**
