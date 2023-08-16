@@ -1,6 +1,5 @@
 package com.br.deliveryrobot.controller;
 
-import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -26,8 +25,7 @@ public class VideoController {
   private VideoService videoService;
 
   @PostMapping
-  public ResponseEntity<String> saveVideo(@RequestParam("file") MultipartFile file)
-      throws IOException {
+  public ResponseEntity<String> saveVideo(@RequestParam("file") MultipartFile file) {
     this.videoService.saveVideo(file);
     return ResponseEntity.ok("Vídeo salvo com sucesso!");
   }

@@ -6,6 +6,9 @@ import com.br.deliveryrobot.entity.Deliverydrone;
 import com.br.deliveryrobot.exceptions.NotFoundException;
 import com.br.deliveryrobot.repository.DeliverydroneRepository;
 
+/**
+ * Layer that makes data's validate and communicate with the DAO layer to persist using his methods.
+ */
 @Service
 public class DeliverydroneService {
 
@@ -13,7 +16,7 @@ public class DeliverydroneService {
   private DeliverydroneRepository deliverydroneRepository;
 
   /**
-   * Create a given drone.
+   * Save a given drone.
    * 
    * @param drone Drone which will be registered.
    * @return The drone that was persisted.
