@@ -39,7 +39,7 @@ public class DeliverydroneService {
   }
 
   /**
-   * Search and update data of a given drone that founded using a given id.
+   * Update data of a given drone that founded using a given id.
    * 
    * @param droneId Drone's id that will be searched.
    * @param drone Object with changes that will be persisted in the founded drone.
