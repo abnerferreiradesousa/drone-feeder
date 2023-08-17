@@ -1,24 +1,8 @@
 <h1 align="center">🚀 Bem vindo ao projeto Drone Feeder! 🚀</h1>
 
-<h2>🚧 Em construção 🚧</h2>
-
 <h2>🥱 Introdução...</h2>
 
 <p>O Drone Feeder é uma aplicação que gerencia um sistema de pedidos em que as entregas são feitas por drones.</p>
-
----
-
-<h2>🛠️ Tecnologias utilizadas 🧰</h2>
-
-<ul>
-  <li>👉 Java</li>
-  <li>👉 Spring Boot</li>
-  <li>👉 Banco de Dados MySQL</li>
-  <li>👉 Docker</li>
-  <li>👉 Lombok</li>
-  <li>👉 JUnit</li>
-  <li>👉 TestContainers</li>
-</ul>
 
 ---
 
@@ -37,6 +21,7 @@
    - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e populá-lo, e outro para subir a API e disponilizar uma URL para acesso da aplicação.*
   
 </details>
+
 <details>
   
 <summary><strong>Como usar cada rota?</strong></summary>  
@@ -44,6 +29,21 @@
  
 [Rotas Documentadas](https://github.com/caioBatistaDosSantos/Project-Tryitter/blob/main/BlogsAPI.md)
       
+</details>
+
+<details>
+  <summary><strong>Tecnologias utilizadas</strong></summary>
+
+<ul>
+  <li>👉 Java</li>
+  <li>👉 Spring Boot</li>
+  <li>👉 Banco de Dados MySQL</li>
+  <li>👉 Docker</li>
+  <li>👉 Lombok</li>
+  <li>👉 JUnit</li>
+  <li>👉 TestContainers</li>
+</ul>
+
 </details>
 
 <h2><i> ⚔️ Desenvolvimento...</i></h2>
