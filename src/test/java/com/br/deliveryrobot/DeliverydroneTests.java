@@ -1,5 +1,6 @@
 package com.br.deliveryrobot;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -22,6 +24,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 @TestMethodOrder(OrderAnnotation.class)
 class DeliverydroneTests extends AbstractContainerBaseTest {
+
+
+  private static final int NONEXISTENT_ON_DATABASE = 999;
 
   @Autowired
   private MockMvc mockMvc;
@@ -87,9 +92,23 @@ class DeliverydroneTests extends AbstractContainerBaseTest {
   public void givenDrone_whenDeleteDroneById_thenReturnStatusNoContent() throws Exception {
     // when -action
     ResultActions response = this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/drones/1"));
-
     // then - verify the output
     response.andExpect(status().isNoContent());
+    response.andExpect(result -> {
+      assertThat(result.getResponse().getContentType()).isNull();
+      assertThat(result.getResponse().getContentLength()).isZero();
+      assertThat(result.getResponse().getContentAsString()).isEmpty();
+    });
+  }
+
+  @Test
+  public void notGivenDrone_whenGetDroneById_thenReturnNotFound() throws Exception {
+    ResultActions response =
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/drones/" + NONEXISTENT_ON_DATABASE));
+
+    response.andExpect(status().isNotFound());
+    response.andExpect(jsonPath("$.message", is("Drone não encontrado!")));
+    response.andExpect(jsonPath("$.status", is(HttpStatus.NOT_FOUND.value())));
   }
 
 }

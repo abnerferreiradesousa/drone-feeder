@@ -35,7 +35,7 @@ public class DeliverydroneService {
    */
   public Deliverydrone getDroneById(long droneId) {
     Deliverydrone droneSearched = this.deliverydroneRepository.findById(droneId)
-        .orElseThrow(() -> new NotFoundException("Não encontrado!"));
+        .orElseThrow(() -> new NotFoundException("Drone não encontrado!"));
 
     return droneSearched;
   }

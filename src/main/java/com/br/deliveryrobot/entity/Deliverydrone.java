@@ -1,6 +1,6 @@
 package com.br.deliveryrobot.entity;
 
-import java.util.Set;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +29,11 @@ public class Deliverydrone {
   private double longitude;
 
   @OneToMany(mappedBy = "deliverydrone")
-  private Set<Order> orders;
+  private List<Order> orders;
+
+  // public void setOrder(Order order) {
+  // order.setDeliverydrone(this);
+  // this.orders.add(order);
+  // }
 
 }

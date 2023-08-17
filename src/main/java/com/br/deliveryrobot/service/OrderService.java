@@ -30,7 +30,7 @@ public class OrderService {
    */
   public Order registerOrder(Order order) {
     Order orderVo = Order.builder().totalPrice(order.getTotalPrice())
-        .itemsQuantity(order.getItemsQuantity()).build();
+        .itemsQuantity(order.getItemsQuantity()).status(DeliveryStatus.EM_PREPARACAO).build();
     return this.orderRepository.save(orderVo);
   }
 

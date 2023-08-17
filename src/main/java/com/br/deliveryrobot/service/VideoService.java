@@ -51,8 +51,10 @@ public class VideoService {
    * @return If video exists will return the own video, otherwise it will throw an exception.
    */
   public Video getById(long videoId) {
-    return this.videoRepository.findById(videoId)
+    Video videoSearched = this.videoRepository.findById(videoId)
         .orElseThrow(() -> new NotFoundException("Vídeo não encontrado!"));
+
+    return videoSearched;
   }
 
   /**

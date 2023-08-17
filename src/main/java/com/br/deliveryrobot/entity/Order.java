@@ -21,6 +21,7 @@ import com.br.deliveryrobot.enums.DeliveryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -42,7 +43,7 @@ public class Order {
   private int itemsQuantity;
 
   @Enumerated(EnumType.STRING)
-  private DeliveryStatus status = DeliveryStatus.EM_PREPARACAO;
+  private DeliveryStatus status;
 
   @Column(name = "bought_at", updatable = false)
   @CreationTimestamp
@@ -59,7 +60,7 @@ public class Order {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "video_id", referencedColumnName = "id")
-  private Video video;
+  private @Getter Video video;
 
   @ManyToOne
   @JoinColumn(name = "customer_id")
@@ -67,11 +68,21 @@ public class Order {
 
   @ManyToOne
   @JoinColumn(name = "deliverydrone_id")
-  private Deliverydrone deliverydrone;
+  private @Getter Deliverydrone deliverydrone;
 
   @ManyToMany
   @JoinTable(name = "t_order_product", joinColumns = @JoinColumn(name = "order_id"),
       inverseJoinColumns = @JoinColumn(name = "product_id"))
   private Set<Product> products;
+
+  // public void setVideo(Video video) {
+  // video.setOrder(this);
+  // this.video = video;
+  // }
+  //
+  // public void setDeliverydrone(Deliverydrone drone) {
+  // drone.setOrder(this);
+  // this.deliverydrone = drone;
+  // }
 
 }
