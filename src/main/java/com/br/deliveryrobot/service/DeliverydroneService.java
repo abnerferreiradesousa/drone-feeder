@@ -2,6 +2,7 @@ package com.br.deliveryrobot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.br.deliveryrobot.dto.DeliverydroneDto;
 import com.br.deliveryrobot.entity.Deliverydrone;
 import com.br.deliveryrobot.exceptions.NotFoundException;
 import com.br.deliveryrobot.interfaces.IDeliverydroneService;
@@ -23,7 +24,7 @@ public class DeliverydroneService implements IDeliverydroneService {
    * @return The drone that was persisted.
    */
   @Override
-  public Deliverydrone registerDrone(Deliverydrone drone) {
+  public Deliverydrone registerDrone(DeliverydroneDto drone) {
     Deliverydrone droneVo = Deliverydrone.builder().nickname(drone.getNickname())
         .latitude(drone.getLatitude()).longitude(drone.getLongitude()).build();
     return this.deliverydroneRepository.save(droneVo);
@@ -51,7 +52,7 @@ public class DeliverydroneService implements IDeliverydroneService {
    * @return Drone updated with given data.
    */
   @Override
-  public Deliverydrone updateDrone(long droneId, Deliverydrone drone) {
+  public Deliverydrone updateDrone(long droneId, DeliverydroneDto drone) {
     Deliverydrone droneSearched = this.getDroneById(droneId);
 
     droneSearched.setNickname(drone.getNickname());

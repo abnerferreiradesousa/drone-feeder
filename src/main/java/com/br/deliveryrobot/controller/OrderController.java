@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.br.deliveryrobot.dto.OrderDto;
 import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.interfaces.IOrderService;
 
@@ -23,11 +24,10 @@ public class OrderController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public Order registerOrder(@RequestBody Order order) {
+  public Order registerOrder(@RequestBody OrderDto order) {
     return this.orderService.registerOrder(order);
   }
 
-  // testar caso de exceção
   @GetMapping("{orderId}")
   @ResponseStatus(HttpStatus.OK)
   public Order getOrderById(@PathVariable(required = true) long orderId) {
@@ -37,7 +37,7 @@ public class OrderController {
   @PutMapping("{orderId}/{droneId}")
   @ResponseStatus(HttpStatus.OK)
   public Order updateOrder(@PathVariable(required = true) long orderId, @PathVariable long droneId,
-      @RequestBody Order order) {
+      @RequestBody OrderDto order) {
     return this.orderService.updateOrder(orderId, droneId, order);
   }
 

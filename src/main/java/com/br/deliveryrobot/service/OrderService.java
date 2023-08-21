@@ -3,6 +3,7 @@ package com.br.deliveryrobot.service;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.br.deliveryrobot.dto.OrderDto;
 import com.br.deliveryrobot.entity.Deliverydrone;
 import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.entity.Video;
@@ -32,7 +33,7 @@ public class OrderService implements IOrderService {
    * @return The order that was created.
    */
   @Override
-  public Order registerOrder(Order order) {
+  public Order registerOrder(OrderDto order) {
     Order orderVo = Order.builder().totalPrice(order.getTotalPrice())
         .itemsQuantity(order.getItemsQuantity()).status(DeliveryStatus.EM_PREPARACAO).build();
     return this.orderRepository.save(orderVo);
@@ -61,7 +62,7 @@ public class OrderService implements IOrderService {
    * @return The order updated.
    */
   @Override
-  public Order updateOrder(long orderId, long droneId, Order order) {
+  public Order updateOrder(long orderId, long droneId, OrderDto order) {
     Order orderSearched = this.getOrderById(orderId);
     Deliverydrone drone = this.deliverydroneService.getDroneById(droneId);
 

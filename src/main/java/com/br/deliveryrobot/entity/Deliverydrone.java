@@ -31,9 +31,4 @@ public class Deliverydrone {
   @OneToMany(mappedBy = "deliverydrone")
   private List<Order> orders;
 
-  // public void setOrder(Order order) {
-  // order.setDeliverydrone(this);
-  // this.orders.add(order);
-  // }
-
 }

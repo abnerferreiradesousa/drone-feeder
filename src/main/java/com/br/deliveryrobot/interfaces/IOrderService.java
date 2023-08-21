@@ -1,5 +1,6 @@
 package com.br.deliveryrobot.interfaces;
 
+import com.br.deliveryrobot.dto.OrderDto;
 import com.br.deliveryrobot.entity.Order;
 
 
@@ -11,7 +12,7 @@ public interface IOrderService {
    * @param order Data that will be persisted.
    * @return The order that was created.
    */
-  Order registerOrder(Order order);
+  Order registerOrder(OrderDto order);
 
   /**
    * Find order using a given order's id.
@@ -30,7 +31,7 @@ public interface IOrderService {
    * @param order Object with changes that will be persisted in the founded drone.
    * @return The order updated.
    */
-  Order updateOrder(long orderId, long droneId, Order order);
+  Order updateOrder(long orderId, long droneId, OrderDto order);
 
   /**
    * Update status of order to "ready for delivery" and the exact datatime it was happen.

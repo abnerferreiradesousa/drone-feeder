@@ -1,5 +1,6 @@
 package com.br.deliveryrobot.interfaces;
 
+import com.br.deliveryrobot.dto.DeliverydroneDto;
 import com.br.deliveryrobot.entity.Deliverydrone;
 
 
@@ -11,7 +12,7 @@ public interface IDeliverydroneService {
    * @param drone Drone which will be registered.
    * @return The drone that was persisted.
    */
-  Deliverydrone registerDrone(Deliverydrone drone);
+  Deliverydrone registerDrone(DeliverydroneDto drone);
 
   /**
    * Find drone by id.
@@ -28,7 +29,7 @@ public interface IDeliverydroneService {
    * @param drone Object with changes that will be persisted in the founded drone.
    * @return Drone updated with given data.
    */
-  Deliverydrone updateDrone(long droneId, Deliverydrone drone);
+  Deliverydrone updateDrone(long droneId, DeliverydroneDto drone);
 
   /**
    * Delete a drone using a given drone's id.

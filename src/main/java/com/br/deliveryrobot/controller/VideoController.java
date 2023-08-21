@@ -41,7 +41,6 @@ public class VideoController {
         .header(HttpHeaders.CONTENT_DISPOSITION, headerValue).body(videoResource);
   }
 
-  // Testar caso de exceção.
   @GetMapping("{videoId}")
   public ResponseEntity<Video> getById(@PathVariable(required = true) long videoId) {
     return ResponseEntity.ok(this.videoService.getById(videoId));

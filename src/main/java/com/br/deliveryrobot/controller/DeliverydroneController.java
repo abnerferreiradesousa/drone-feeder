@@ -1,5 +1,6 @@
 package com.br.deliveryrobot.controller;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.br.deliveryrobot.dto.DeliverydroneDto;
 import com.br.deliveryrobot.entity.Deliverydrone;
 import com.br.deliveryrobot.interfaces.IDeliverydroneService;
 
@@ -23,11 +25,10 @@ public class DeliverydroneController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public Deliverydrone registerDrone(@RequestBody Deliverydrone drone) {
+  public Deliverydrone registerDrone(@RequestBody @Valid DeliverydroneDto drone) {
     return this.deliverydroneService.registerDrone(drone);
   }
 
-  // testar caso de exceção
   @GetMapping("/{droneId}")
   @ResponseStatus(HttpStatus.OK)
   public Deliverydrone getDroneById(@PathVariable(required = true) long droneId) {
@@ -37,7 +38,7 @@ public class DeliverydroneController {
   @PutMapping("/{droneId}")
   @ResponseStatus(HttpStatus.OK)
   public Deliverydrone updateDrone(@PathVariable(required = true) long droneId,
-      @RequestBody Deliverydrone drone) {
+      @RequestBody @Valid DeliverydroneDto drone) {
     return this.deliverydroneService.updateDrone(droneId, drone);
   }
 

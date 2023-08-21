@@ -19,11 +19,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.multipart.MultipartFile;
-import com.br.deliveryrobot.entity.Deliverydrone;
+import com.br.deliveryrobot.dto.DeliverydroneDto;
 import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.enums.DeliveryStatus;
-import com.br.deliveryrobot.service.DeliverydroneService;
-import com.br.deliveryrobot.service.VideoService;
+import com.br.deliveryrobot.interfaces.IDeliverydroneService;
+import com.br.deliveryrobot.interfaces.IVideoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -35,10 +35,10 @@ class OrderTests extends AbstractContainerBaseTest {
   private MockMvc mockMvc;
 
   @MockBean
-  private DeliverydroneService deliverydroneService;
+  private IDeliverydroneService deliverydroneService;
 
   @MockBean
-  private VideoService videoService;
+  private IVideoService videoService;
 
   private static final int NONEXISTENT_ON_DATABASE = 999;
 
@@ -75,8 +75,8 @@ class OrderTests extends AbstractContainerBaseTest {
   @Test
   @org.junit.jupiter.api.Order(3)
   void givenOrder_whenUpdateOrder_thenReturnOrderUpdated() throws Exception {
-    Deliverydrone drone =
-        Deliverydrone.builder().nickname("Wall-E").latitude(35.142).longitude(27.053).build();
+    DeliverydroneDto drone =
+        DeliverydroneDto.builder().nickname("Wall-E").latitude(35.142).longitude(27.053).build();
 
     this.deliverydroneService.registerDrone(drone);
 
