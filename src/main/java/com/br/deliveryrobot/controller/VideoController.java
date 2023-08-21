@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.br.deliveryrobot.entity.Video;
-import com.br.deliveryrobot.service.VideoService;
+import com.br.deliveryrobot.interfaces.IVideoService;
 
 @RestController
 @RequestMapping("/api/videos")
 public class VideoController {
 
   @Autowired
-  private VideoService videoService;
+  private IVideoService videoService;
 
   @PostMapping
   public ResponseEntity<String> saveVideo(@RequestParam("file") MultipartFile file) {

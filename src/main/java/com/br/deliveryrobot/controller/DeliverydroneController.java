@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.br.deliveryrobot.entity.Deliverydrone;
-import com.br.deliveryrobot.service.DeliverydroneService;
+import com.br.deliveryrobot.interfaces.IDeliverydroneService;
 
 @RestController
 @RequestMapping("/api/drones")
 public class DeliverydroneController {
 
   @Autowired
-  private DeliverydroneService deliverydroneService;
+  private IDeliverydroneService deliverydroneService;
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)

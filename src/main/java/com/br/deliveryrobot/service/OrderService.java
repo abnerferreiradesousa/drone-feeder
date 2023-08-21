@@ -8,19 +8,22 @@ import com.br.deliveryrobot.entity.Order;
 import com.br.deliveryrobot.entity.Video;
 import com.br.deliveryrobot.enums.DeliveryStatus;
 import com.br.deliveryrobot.exceptions.NotFoundException;
+import com.br.deliveryrobot.interfaces.IDeliverydroneService;
+import com.br.deliveryrobot.interfaces.IOrderService;
+import com.br.deliveryrobot.interfaces.IVideoService;
 import com.br.deliveryrobot.repository.OrderRepository;
 
 @Service
-public class OrderService {
+public class OrderService implements IOrderService {
 
   @Autowired
   private OrderRepository orderRepository;
 
   @Autowired
-  private VideoService videoService;
+  private IVideoService videoService;
 
   @Autowired
-  private DeliverydroneService deliverydroneService;
+  private IDeliverydroneService deliverydroneService;
 
   /**
    * Save a given order on database.
@@ -28,6 +31,7 @@ public class OrderService {
    * @param order Data that will be persisted.
    * @return The order that was created.
    */
+  @Override
   public Order registerOrder(Order order) {
     Order orderVo = Order.builder().totalPrice(order.getTotalPrice())
         .itemsQuantity(order.getItemsQuantity()).status(DeliveryStatus.EM_PREPARACAO).build();
@@ -40,6 +44,7 @@ public class OrderService {
    * @param orderId Order's id that will be searched.
    * @return Order that was founded.
    */
+  @Override
   public Order getOrderById(long orderId) {
     Order orderSearched =
         this.orderRepository.findById(orderId).orElseThrow(NotFoundException::new);
@@ -55,6 +60,7 @@ public class OrderService {
    * @param order Object with changes that will be persisted in the founded drone.
    * @return The order updated.
    */
+  @Override
   public Order updateOrder(long orderId, long droneId, Order order) {
     Order orderSearched = this.getOrderById(orderId);
     Deliverydrone drone = this.deliverydroneService.getDroneById(droneId);
@@ -77,6 +83,7 @@ public class OrderService {
    * @param orderId Order's id that will be searched.
    * @return The order updated.
    */
+  @Override
   public Order updateToReadyForDelivery(long orderId) {
     Order orderSearched = this.getOrderById(orderId);
 
@@ -92,6 +99,7 @@ public class OrderService {
    * @param orderId Order's id that will be searched.
    * @return The order updated.
    */
+  @Override
   public Order updateToOutforDelivery(long orderId) {
     Order orderSearched = this.getOrderById(orderId);
 
@@ -108,6 +116,7 @@ public class OrderService {
    * @param videoId The id of the deliver that was recorded.
    * @return The order updated.
    */
+  @Override
   public Order updateToDelivered(long orderId, long videoId) {
     Order orderSearched = this.getOrderById(orderId);
     Video video = this.videoService.getById(videoId);
@@ -124,6 +133,7 @@ public class OrderService {
    * 
    * @param orderId Order's id that will be searched.
    */
+  @Override
   public void deleteOrder(long orderId) {
     this.orderRepository.deleteById(orderId);;
   }

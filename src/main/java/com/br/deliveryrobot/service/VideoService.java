@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.br.deliveryrobot.entity.Video;
 import com.br.deliveryrobot.exceptions.NotFoundException;
+import com.br.deliveryrobot.interfaces.IVideoService;
 import com.br.deliveryrobot.repository.VideoRepository;
 
 /**
  * Layer that makes data's validate and communicate with the DAO layer to persist using his methods.
  */
 @Service
-public class VideoService {
+public class VideoService implements IVideoService {
 
   @Autowired
   private VideoRepository videoRepository;
@@ -22,6 +23,7 @@ public class VideoService {
    * 
    * @param file Content into array of bytes format.
    */
+  @Override
   public void saveVideo(MultipartFile file) {
     try {
       System.out.println("saveVideoService" + file.getOriginalFilename());
@@ -39,10 +41,10 @@ public class VideoService {
    * @return If video exists will return the video in bytes format for download, otherwise it will
    *         throw an exception.
    */
+  @Override
   public Video downloadVideoById(long videoId) {
     return this.getById(videoId);
   }
-
 
   /**
    * Find video using a given drone's id.
@@ -50,6 +52,7 @@ public class VideoService {
    * @param videoId Video id that will be searched.
    * @return If video exists will return the own video, otherwise it will throw an exception.
    */
+  @Override
   public Video getById(long videoId) {
     Video videoSearched = this.videoRepository.findById(videoId)
         .orElseThrow(() -> new NotFoundException("Vídeo não encontrado!"));
@@ -62,6 +65,7 @@ public class VideoService {
    * 
    * @return All videos on database.
    */
+  @Override
   public List<Video> getAllVideos() {
     return this.videoRepository.findAll();
   }

@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.br.deliveryrobot.entity.Order;
-import com.br.deliveryrobot.service.OrderService;
+import com.br.deliveryrobot.interfaces.IOrderService;
 
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
 
   @Autowired
-  private OrderService orderService;
+  private IOrderService orderService;
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
