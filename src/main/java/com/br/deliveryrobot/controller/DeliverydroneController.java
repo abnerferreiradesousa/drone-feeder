@@ -3,6 +3,7 @@ package com.br.deliveryrobot.controller;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class DeliverydroneController {
   private IDeliverydroneService deliverydroneService;
 
   @PostMapping
+  @Transactional
   @ResponseStatus(HttpStatus.CREATED)
   public Deliverydrone registerDrone(@RequestBody @Valid DeliverydroneDto drone) {
     return this.deliverydroneService.registerDrone(drone);
@@ -36,6 +38,7 @@ public class DeliverydroneController {
   }
 
   @PutMapping("/{droneId}")
+  @Transactional
   @ResponseStatus(HttpStatus.OK)
   public Deliverydrone updateDrone(@PathVariable(required = true) long droneId,
       @RequestBody @Valid DeliverydroneDto drone) {
@@ -43,6 +46,7 @@ public class DeliverydroneController {
   }
 
   @DeleteMapping("/{droneId}")
+  @Transactional
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void removeDrone(@PathVariable(required = true) long droneId) {
     this.deliverydroneService.deleteDrone(droneId);

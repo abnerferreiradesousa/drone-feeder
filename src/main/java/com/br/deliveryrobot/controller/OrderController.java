@@ -2,6 +2,7 @@ package com.br.deliveryrobot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ public class OrderController {
   private IOrderService orderService;
 
   @PostMapping
+  @Transactional
   @ResponseStatus(HttpStatus.CREATED)
   public Order registerOrder(@RequestBody OrderDto order) {
     return this.orderService.registerOrder(order);
@@ -35,6 +37,7 @@ public class OrderController {
   }
 
   @PutMapping("{orderId}/{droneId}")
+  @Transactional
   @ResponseStatus(HttpStatus.OK)
   public Order updateOrder(@PathVariable(required = true) long orderId, @PathVariable long droneId,
       @RequestBody OrderDto order) {
@@ -42,22 +45,29 @@ public class OrderController {
   }
 
   @PutMapping("{orderId}/readyfordelivery")
+  @Transactional
+  @ResponseStatus(HttpStatus.OK)
   public Order updateToReadyForDelivery(@PathVariable(required = true) long orderId) {
     return this.orderService.updateToReadyForDelivery(orderId);
   }
 
   @PutMapping("{orderId}/outfordelivery")
+  @Transactional
+  @ResponseStatus(HttpStatus.OK)
   public Order updateToOutforDelivery(@PathVariable(required = true) long orderId) {
     return this.orderService.updateToOutforDelivery(orderId);
   }
 
   @PutMapping("{orderId}/{videoId}/delivered")
+  @Transactional
+  @ResponseStatus(HttpStatus.OK)
   public Order updateToDelivered(@PathVariable(required = true) long orderId,
       @PathVariable(required = true) long videoId) {
     return this.orderService.updateToDelivered(orderId, videoId);
   }
 
   @DeleteMapping("{orderId}")
+  @Transactional
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void removeOrder(@PathVariable(required = true) long orderId) {
     this.orderService.deleteOrder(orderId);
