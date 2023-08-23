@@ -12,7 +12,7 @@ public interface IVideoService {
    * 
    * @param file Content into array of bytes format.
    */
-  void saveVideo(MultipartFile file);
+  Video saveVideo(MultipartFile file);
 
   /**
    * Download video by id.

@@ -42,8 +42,8 @@ class VideoTests extends AbstractContainerBaseTest {
     ResultActions response = mockMvc.perform(
         MockMvcRequestBuilders.multipart("/api/videos").file("file", mockMultipartFile.getBytes()));
 
-    response.andExpect(status().isOk());
-    response.andExpect(jsonPath("$", is("Vídeo salvo com sucesso!")));
+    response.andExpect(status().isCreated());
+    response.andExpect(jsonPath("$.id", is(Integer.valueOf(1))));
   }
 
   @Order(2)

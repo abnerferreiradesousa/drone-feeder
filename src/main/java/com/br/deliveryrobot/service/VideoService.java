@@ -24,14 +24,16 @@ public class VideoService implements IVideoService {
    * @param file Content into array of bytes format.
    */
   @Override
-  public void saveVideo(MultipartFile file) {
+  public Video saveVideo(MultipartFile file) {
+    Video videoCreated = null;
     try {
       System.out.println("saveVideoService" + file.getOriginalFilename());
       Video video = new Video(file.getOriginalFilename(), file.getBytes());
-      this.videoRepository.save(video);
+      videoCreated = this.videoRepository.save(video);
     } catch (Exception ex) {
       System.out.println(ex.getMessage());
     }
+    return videoCreated;
   }
 
   /**
