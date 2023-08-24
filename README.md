@@ -18,7 +18,7 @@
       - `cd drone-feeder`
 2. Inicie a aplicação com o comando:
  - `docker-compose up -d --build`
-   - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e populá-lo, e outro para subir a API e disponilizar uma URL para acesso da aplicação.*
+   - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e populá-lo, e outro para subir a API e disponilizar uma URL para acesso da aplicação e deve levar não mais que 5 minutos.*
 
 </details>
 
