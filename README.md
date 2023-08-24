@@ -49,13 +49,6 @@
 
 ---
 
-<h3>⚔️ Desenvolvimento</h3>
-
-- [Trello](https://trello.com/c/9tutsbgi/11-link-do-escalidraw-https-excalidrawcom-json6iooox5zdvz4of7xxzyny7vcx0bqpjbjhsoorrjftta)
-- [Escalidraw](https://excalidraw.com/#json=6IooOx5zDVZ4OF7XXzyny,7vCx0bQpJBJHSoOrRJfTtA)
-
----
-
 <h3>🗡️ Defafios que enfrentei </h3> 
 
 * 🛡️ Configurar o Lombok.
