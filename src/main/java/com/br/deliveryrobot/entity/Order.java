@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -70,19 +71,9 @@ public class Order {
   @JoinColumn(name = "deliverydrone_id")
   private @Getter Deliverydrone deliverydrone;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "t_order_product", joinColumns = @JoinColumn(name = "order_id"),
       inverseJoinColumns = @JoinColumn(name = "product_id"))
   private Set<Product> products;
-
-  // public void setVideo(Video video) {
-  // video.setOrder(this);
-  // this.video = video;
-  // }
-  //
-  // public void setDeliverydrone(Deliverydrone drone) {
-  // drone.setOrder(this);
-  // this.deliverydrone = drone;
-  // }
 
 }
