@@ -18,7 +18,7 @@
       - `cd drone-feeder`
 2. Inicie a aplicação com o comando:
  - `docker-compose up -d --build`
-   - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e populá-lo, e outro para subir a API e disponilizar uma URL para acesso da aplicação.*
+   - *Obs: Este comando será responsável por criar dois cointainers docker: um para iniciar banco de dados e outro para subir a API e disponilizar uma URL para acesso da aplicação e deve levar não mais que 5 minutos.*
 
 </details>
 
@@ -46,13 +46,6 @@
   </ul>
 
 </details>
-
----
-
-<h3>⚔️ Desenvolvimento</h3>
-
-- [Trello](https://trello.com/c/9tutsbgi/11-link-do-escalidraw-https-excalidrawcom-json6iooox5zdvz4of7xxzyny7vcx0bqpjbjhsoorrjftta)
-- [Escalidraw](https://excalidraw.com/#json=6IooOx5zDVZ4OF7XXzyny,7vCx0bQpJBJHSoOrRJfTtA)
 
 ---
 
