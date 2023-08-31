@@ -27,7 +27,7 @@
 <summary><strong>Como usar cada rota?</strong></summary>  
 </br>
 
-[Rotas Documentadas](https://github.com/caioBatistaDosSantos/Project-Tryitter/blob/main/BlogsAPI.md)
+[Rotas Documentadas](https://github.com/abnerferreiradesousa/drone-feeder/blob/main/drone-feeder.md)
 
 </details>
 
